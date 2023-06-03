@@ -7,22 +7,25 @@ import Adherent from "./pages/Adherent";
 import Auteur from "./pages/Auteur";
 import Categorie from "./pages/Categorie";
 import Emprunt from "./pages/Emprunt";
-import NavBar from "./components/NavBar/NavBar";
 import Livre from "./pages/Livre";
+import AddBook from "./features/livre/AddBook";
+import AddCategorie from "./features/categorie/AddCategorie";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/home" element={<Home />} />
+  <BrowserRouter> 
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route path="/" element={<Home />} />
         <Route path="/adherents" element={<Adherent />} />
         <Route path="/auteur" element={<Auteur />} />
         <Route path="/categorie" element={<Categorie />} />
+        <Route path="/categorie/new" element={<AddCategorie />} />
         <Route path="/emprunt" element={<Emprunt />} />
         <Route path="/livre" element={<Livre />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+        <Route path="/livre/new" element={<AddBook />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
 );

@@ -1,9 +1,9 @@
-import NavBar from "../components/NavBar/NavBar";
+
 
 const Home = () => {
   return (
-    <div>
-      <NavBar />
+    <div className="container mt-4">
+      <h1>Bienvenue</h1>
     </div>
   );
 };

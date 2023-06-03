@@ -8,8 +8,8 @@ export class Bibliotheque {
     return response.data;
   }
 
-  static async addBook() {
-    const response = await axios.post(`${BASE_URL}/livre`);
+  static async addBook(book) {
+    const response = await axios.post(`${BASE_URL}/livre`, book);
     return response.data;
   }
 
@@ -18,8 +18,8 @@ export class Bibliotheque {
     return response.data;
   }
 
-  static async updateBookById(idBook) {
-    const response = await axios.patch(`${BASE_URL}/livre`, idBook);
+  static async updateBookById(book) {
+    const response = await axios.patch(`${BASE_URL}/livre`, book);
     return response.data;
   }
 
@@ -34,8 +34,8 @@ export class Bibliotheque {
     return response.data;
   }
 
-  static async addAdherent() {
-    const response = await axios.post(`${BASE_URL}/adherent`);
+  static async addAdherent(adherent) {
+    const response = await axios.post(`${BASE_URL}/adherent`, adherent);
     return response.data;
   }
 
@@ -44,8 +44,8 @@ export class Bibliotheque {
     return response.data;
   }
 
-  static async updateAdherentById(idAdherent) {
-    const response = await axios.patch(`${BASE_URL}/adherent`, idAdherent);
+  static async updateAdherentById(adherent) {
+    const response = await axios.patch(`${BASE_URL}/adherent`, adherent);
     return response.data;
   }
 
@@ -60,22 +60,74 @@ export class Bibliotheque {
     return response.data;
   }
 
-  static async addAuteur() {
-    const response = await axios.post(`${BASE_URL}/auteurs`);
+  static async addAuteur(auteur) {
+    const response = await axios.post(`${BASE_URL}/auteur`, auteur);
     return response.data;
   }
 
   static async findAuteurById(idAuteur) {
-    const response = await axios.get(`${BASE_URL}/auteurs?id=${idAuteur}`);
+    const response = await axios.get(`${BASE_URL}/auteur?id=${idAuteur}`);
     return response.data;
   }
 
-  static async updateAuteurById(idAuteur) {
-    const response = await axios.patch(`${BASE_URL}/auteurs`, idAuteur);
+  static async updateAuteurById(auteur) {
+    const response = await axios.patch(`${BASE_URL}/auteur`, auteur);
     return response.data;
   }
 
   static async deleteAuteurById(idAuteur) {
-    await axios.delete(`${BASE_URL}/auteurs?id=${idAuteur}`);
+    await axios.delete(`${BASE_URL}/auteur?id=${idAuteur}`);
+  }
+
+  // ================ CATEGORIE ==============
+
+  static async getAllCategories() {
+    const response = await axios.get(`${BASE_URL}/categories`);
+    return response.data;
+  }
+
+  static async addCategorie(categorie) {
+    const response = await axios.post(`${BASE_URL}/categorie`, categorie);
+    return response.data;
+  }
+
+  static async findCategorieById(idCategorie) {
+    const response = await axios.get(`${BASE_URL}/categorie?id=${idCategorie}`);
+    return response.data;
+  }
+
+  static async updateCategorieById(categorie) {
+    const response = await axios.patch(`${BASE_URL}/categorie`, categorie);
+    return response.data;
+  }
+
+  static async deleteCategorieById(idCategorie) {
+    await axios.delete(`${BASE_URL}/categorie?id=${idCategorie}`);
+  }
+
+  // ================ EMPRUNT ==============
+
+  static async getAllEmprunts() {
+    const response = await axios.get(`${BASE_URL}/emprunts`);
+    return response.data;
+  }
+
+  static async addEmprunt(emprunt) {
+    const response = await axios.post(`${BASE_URL}/emprunt`, emprunt);
+    return response.data;
+  }
+
+  static async findEmpruntById(idEmprunt) {
+    const response = await axios.get(`${BASE_URL}/emprunt?id=${idEmprunt}`);
+    return response.data;
+  }
+
+  static async updateEmpruntById(emprunt) {
+    const response = await axios.patch(`${BASE_URL}/emprunt`, emprunt);
+    return response.data;
+  }
+
+  static async deleteEmpruntById(idEmprunt) {
+    await axios.delete(`${BASE_URL}/emprunt?id=${idEmprunt}`);
   }
 }
