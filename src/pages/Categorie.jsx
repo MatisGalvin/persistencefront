@@ -14,7 +14,16 @@ const Categorie = () => {
 
   useEffect(() => {
     GetAllCategories();
-  }, []);
+  }, [categorie]);
+
+  const handleDelete = async (categorie) => {
+    await Bibliotheque.deleteCategorieById(categorie.id);
+    navigation("/categorie");
+  };
+
+  const handleUpdate = async (idCategorie) => {
+    navigation(`/categorie/${idCategorie}`);
+  };
 
   return (
     <div className="container mt-4">
@@ -22,16 +31,30 @@ const Categorie = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>id</th>
             <th>nom</th>
+            <th>action</th>
           </tr>
         </thead>
         <tbody>
           {categorie &&
             categorie.map((categorie) => (
               <tr key={categorie.id}>
-                <td>{categorie.id}</td>
                 <td>{categorie.nom}</td>
+                <td>
+                  <Button
+                    variant="primary"
+                    className="mx-3"
+                    onClick={() => handleUpdate(categorie.id)}
+                  >
+                    Modifier
+                  </Button>
+                  <Button
+                    onClick={() => handleDelete(categorie)}
+                    variant="danger"
+                  >
+                    Supprimer
+                  </Button>
+                </td>
               </tr>
             ))}
           <tr>
