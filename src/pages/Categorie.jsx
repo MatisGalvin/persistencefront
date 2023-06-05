@@ -18,7 +18,7 @@ const Categorie = () => {
 
   const handleDelete = async (categorie) => {
     await Bibliotheque.deleteCategorieById(categorie);
-    navigation("/categorie");
+    GetAllCategories();
   };
 
   const handleUpdate = async (idCategorie) => {
