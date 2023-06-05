@@ -22,6 +22,7 @@ const AddBook = () => {
     categorie: {
       id: 1,
       nom: "",
+      categorie: false
     },
     nom: "",
   });
@@ -32,7 +33,7 @@ const AddBook = () => {
   }
 
   async function getCategories() {
-    const result = await Bibliotheque.getAllCategories();
+    const result = await Bibliotheque.getAllNoFlagCategories();
     setListeCategories(result);
   }
   useEffect(() => {

@@ -8,7 +8,7 @@ const Categorie = () => {
   const navigation = useNavigate();
 
   async function GetAllCategories() {
-    const result = await Bibliotheque.getAllCategories();
+    const result = await Bibliotheque.getAllNoFlagCategories();
     setCategorie(result);
   }
 
@@ -17,7 +17,7 @@ const Categorie = () => {
   }, [categorie]);
 
   const handleDelete = async (categorie) => {
-    await Bibliotheque.deleteCategorieById(categorie.id);
+    await Bibliotheque.deleteCategorieById(categorie);
     navigation("/categorie");
   };
 

@@ -6,12 +6,14 @@ const AddCategorie = () => {
   const navigation = useNavigate();
   const [categorie, setCategorie] = useState({
     nom: "",
+    flag: false
   });
 
   const handleChange = (e) => {
     const { value } = e.target;
     setCategorie({
       nom: value,
+      flag: false
     });
   };
 
