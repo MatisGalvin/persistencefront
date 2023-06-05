@@ -4,8 +4,13 @@ import { BASE_URL } from "../config";
 export class Bibliotheque {
   // ================== LIVRES ====================
   static async getAllBooks() {
-    const response = await axios.get(`${BASE_URL}/livres`);
+    const response = await axios.get(`${BASE_URL}/livres/noflag`);
     return response.data;
+  }
+
+  static async getAllBooksFlag() {
+    const result = await axios.get(`${BASE_URL}/livres/flag`);
+    return result.data;
   }
 
   static async addBook(book) {

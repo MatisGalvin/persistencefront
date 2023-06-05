@@ -122,7 +122,7 @@ const AddBook = () => {
         {listeAutheurs &&
           listeAutheurs.map((auteur) => (
             <option value={auteur.id} key={auteur.id}>
-              {auteur.nom}
+              {auteur.nom} {auteur.prenom}
             </option>
           ))}
       </select>

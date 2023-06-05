@@ -21,6 +21,13 @@ const Livre = () => {
     getAllBooks();
   }, []);
 
+  const handleDelete = async (livre) => {
+    const currentBook = livre;
+    currentBook.flag = 1;
+    await Bibliotheque.updateBookById(currentBook);
+    getAllBooks();
+  };
+
   return (
     <div className="container mt-4">
       <Table striped bordered hover>
@@ -32,27 +39,45 @@ const Livre = () => {
             <th>Nombre pages</th>
             <th>Auteur</th>
             <th>Date de parution</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {books &&
             books.map((book) => (
-                <tr key={book.id}>
-                  <td>{book.id}</td>
-                  <td>{book.nom}</td>
-                  <td>{book.categorie.nom}</td>
-                  <td>{book.nombre_de_pages}</td>
-                  <td>
-                    {book.auteur.prenom} {book.auteur.nom}
-                  </td>
-                  <td>
-                    {format(new Date(book.date_de_parution), "dd MMM yyyy")}
-                  </td>
-                </tr>
+              <tr key={book.id}>
+                <td>{book.id}</td>
+                <td>{book.nom}</td>
+                <td>{book.categorie.nom}</td>
+                <td>{book.nombre_de_pages}</td>
+                <td>
+                  {book.auteur.prenom} {book.auteur.nom}
+                </td>
+                <td>
+                  {format(new Date(book.date_de_parution), "dd MMM yyyy")}
+                </td>
+                <td>
+                  {/* <Button
+                    variant="primary"
+                    className="mx-3"
+                    onClick={() => handleUpdate(categorie.id)}
+                  >
+                    Modifier
+                  </Button> */}
+                  <Button onClick={() => handleDelete(book)} variant="danger">
+                    Supprimer
+                  </Button>
+                </td>
+              </tr>
             ))}
           <tr>
-            <td colSpan={6}>
-              <Button onClick={() => navigation('/livre/new')} variant="primary">Ajouter un livre</Button>
+            <td colSpan={7}>
+              <Button
+                onClick={() => navigation("/livre/new")}
+                variant="primary"
+              >
+                Ajouter un livre
+              </Button>
             </td>
           </tr>
         </tbody>
