@@ -57,7 +57,7 @@ const AddEmprunt = () => {
     setEmprunt(newEmprunt);
 
     addEmprunt(newEmprunt);
-    navigate("/auteur");
+    navigate("/emprunt");
   };
 
   return (
