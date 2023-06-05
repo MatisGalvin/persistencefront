@@ -14,7 +14,7 @@ const Categorie = () => {
 
   useEffect(() => {
     GetAllCategories();
-  }, [categorie]);
+  }, []);
 
   const handleDelete = async (categorie) => {
     await Bibliotheque.deleteCategorieById(categorie);

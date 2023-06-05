@@ -18,7 +18,7 @@ const Adherent = () => {
 
   useEffect(() => {
     getAllAdherents();
-  }, [adherents]);
+  }, []);
 
   const handleDelete = async (adherent) => {
     await Bibliotheque.deleteAdherentById(adherent.id);

@@ -16,7 +16,7 @@ const Auteur = () => {
 
   useEffect(() => {
     getAllAuteurs();
-  }, [auteursList]);
+  }, []);
 
   const handleDelete = async (auteur) => {
     await Bibliotheque.deleteAuteurById(auteur.id);
