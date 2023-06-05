@@ -86,6 +86,11 @@ export class Bibliotheque {
     return response.data;
   }
 
+  static async getAllNoFlagCategories() {
+    const response = await axios.get(`${BASE_URL}/categories/noflag`);
+    return response.data;
+  }
+
   static async addCategorie(categorie) {
     const response = await axios.post(`${BASE_URL}/categorie`, categorie);
     return response.data;
@@ -101,8 +106,12 @@ export class Bibliotheque {
     return response.data;
   }
 
-  static async deleteCategorieById(idCategorie) {
-    await axios.delete(`${BASE_URL}/categorie?id=${idCategorie}`);
+  // static async deleteCategorieById(idCategorie) {
+  //   await axios.delete(`${BASE_URL}/categorie?id=${idCategorie}`);
+  // }
+
+  static async deleteCategorieById(categorie) {
+    await axios.patch(`${BASE_URL}/categorie/delete`, categorie);
   }
 
   // ================ EMPRUNT ==============
