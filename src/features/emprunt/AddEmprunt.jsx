@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Bibliotheque } from "../../api/bibliotheque";
+import { useNavigate } from "react-router-dom";
 
 const AddEmprunt = () => {
   const [emprunt, setEmprunt] = useState({
@@ -14,6 +15,8 @@ const AddEmprunt = () => {
   const [books, setListeBooks] = useState();
   const [currentBookId, setCurrentBookId] = useState(-1);
   const [currentAdherentId, setCurrentAdherentId] = useState(-1);
+
+  const navigate = useNavigate();
 
   async function GetAllAdherents() {
     const result = await Bibliotheque.getAllAdherents();
@@ -43,14 +46,18 @@ const AddEmprunt = () => {
       Bibliotheque.findAdherentById(currentAdherentId),
     ]);
 
-    setEmprunt((previousState) => ({
-      ...previousState,
+    console.log(currentBook, currentAdherent);
+
+    const newEmprunt = {
+      ...emprunt,
       adherent: currentAdherent,
       livre: [currentBook],
-    }));
+    };
 
-    console.log(emprunt);
-    // addEmprunt(emprunt);
+    setEmprunt(newEmprunt);
+
+    addEmprunt(newEmprunt);
+    navigate("/auteur");
   };
 
   return (
