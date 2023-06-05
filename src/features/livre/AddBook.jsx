@@ -76,14 +76,16 @@ const AddBook = () => {
     e.preventDefault();
     const auteur = await Bibliotheque.findAuteurById(currentAuteurID);
     const categorie = await Bibliotheque.findCategorieById(currentCategorieID);
-    setBook((prevState) => ({
-      ...prevState,
+
+    const newBook = {
+      ...book,
       auteur: auteur,
       categorie: categorie,
-    }));
+    };
+    setBook(newBook);
 
-    AddBook(book);
-    navigate("/livre  ");
+    AddBook(newBook);
+    navigate("/livre");
   };
 
   const onChangeAuteur = (e) => {
